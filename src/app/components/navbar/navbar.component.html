@@ -1,0 +1,91 @@
+<nav class=" border-solid border-2 border-gray-200 px-2 shadow-md ">
+  <div class="flex flex-wrap justify-center items-center">
+    <div class="flex justify-between px-3 items-center w-11/12">
+      <a routerLink="/">
+        <img loading="lazy" class="w-20 mr-8" src="/assets/images/svg/Ahorra +.svg" alt="logo" />
+      </a>
+      <div class="flex items-center">
+        <ul class="flex items-center space-x-2 text-sm font-medium">
+          <li>
+            <a class="block py-3 px-4 text-black">Contador</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex items-center">
+      <button type="button" class="flex rounded-full" aria-expanded="false" type="button" (click)="isOpen=!isOpen"
+        cdkOverlayOrigin #menuOverlay="cdkOverlayOrigin">
+        <img class="w-8 h-8 rounded-full" src="https://api.lorem.space/image/face?w=400&h=400" alt="user photo" />
+      </button>
+    </div>
+  </div>
+</nav>
+<ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="menuOverlay" [cdkConnectedOverlayOpen]="isOpen" (overlayOutsideClick)="isOpen=!isOpen">
+  <div class="z-50 my-4 w-60 text-base list-none bg-white rounded divide-y divide-gray-100 shadow">
+    <div class="py-3 px-4 flex justify-between">
+      <span class="block text-sm font-semibold text-gray-900">Cuenta</span>
+      <button (click)="isOpen = !isOpen" class="block text-sm text-gray-900">
+        <fa-icon [icon]="faXmark"></fa-icon>
+      </button>
+    </div>
+    <div class="py-3 px-4 flex items-center space-x-4">
+      <img class="w-10 h-10 rounded-full" src="https://api.lorem.space/image/face?w=400&h=400" alt="" />
+      <div class="space-y-1">
+        <div>Jese Leos</div>
+        <div class="text-sm text-gray-500">nico@gmail.com</div>
+      </div>
+    </div>
+    <ul class="py-2 px-2 text-start">
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-200 hover:rounded-md"><fa-icon
+            [icon]="faHouse"></fa-icon> Home</a>
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-200 hover:rounded-md"><fa-icon
+            [icon]="faMobileRetro"></fa-icon> Contador</a>
+      </li>
+      <li>
+        <cdk-accordion>
+          <cdk-accordion-item #accordionMenu="cdkAccordionItem">
+            <button class="w-full py-2 px-4 text-start text-sm text-gray-700 hover:bg-gray-200 hover:rounded-md"
+              type="button" (click)="accordionMenu.toggle()">
+              <fa-icon [icon]="faClockRotateLeft"> </fa-icon>
+              Historial
+              <fa-icon [icon]="accordionMenu.expanded ? faAngleDoubleUp : faAngleDoubleDown"> </fa-icon>
+            </button>
+            <div [style.display]="accordionMenu.expanded ? '':'none'">
+              <a href="#"
+                class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-200 hover:rounded-md w-full"><fa-icon
+                  [icon]="faHandHoldingDollar"></fa-icon> Presupuesto</a>
+            </div>
+          </cdk-accordion-item>
+        </cdk-accordion>
+
+        <!-- <button type="button" (click) = "isOpenSubMenu = !isOpenSubMenu" cdkOverlayOrigin #SubMenuOverlay="cdkOverlayOrigin" class="w-full text-center">
+      <a
+        class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600"
+        ><fa-icon [icon]="faClockRotateLeft"> </fa-icon> Historial
+        <ng-template cdkConnectedOverlay [cdkConnectedOverlayOrigin]="SubMenuOverlay" [cdkConnectedOverlayOpen]="isOpenSubMenu">
+          <a
+            href="#"
+            class="block py-2 px-4 bg-blue-300 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 w-full"
+            ><fa-icon [icon]="faHandHoldingDollar"></fa-icon> Presupuesto</a> 
+        </ng-template>
+      </a>
+      </button> -->
+      </li>
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-200 hover:rounded-md">
+          <fa-icon [icon]="faCircleExclamation"></fa-icon> Daños
+        </a>
+      </li>
+    </ul>
+    <ul class="py-1">
+      <li>
+        <a href="#" class="block py-2 px-4 text-sm text-gray-700 text-center">Cerrar Sesion
+        </a>
+      </li>
+    </ul>
+  </div>
+</ng-template>
+

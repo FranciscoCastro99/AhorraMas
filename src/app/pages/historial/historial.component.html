@@ -1,0 +1,40 @@
+<div class="w-full h-screen">
+    <app-navbar></app-navbar>
+    <h1 class="py-5 text-center font-semibold text-3xl">Historial</h1>
+    <div class="text-center mx-12 w-11/12 h-11/12 bg-slate-200 rounded-lg">
+        <!-- <cdk-accordion>
+            <cdk-accordion-item #acordionHistorial="cdkAccordionItem">
+                <button class="w-full py-1 px-2 flex justify-center gap-2 items-center" type="button"
+                    (click)="acordionHistorial.toggle()">2023
+                    <fa-icon [icon]="acordionHistorial.expanded ? faAngleUp: faAngleDown"></fa-icon>
+                </button>
+                <div [style.display]="acordionHistorial.expanded ? '' :'none'">
+                    <p>1</p>
+                    <p>2</p>
+                </div>
+            </cdk-accordion-item>
+        </cdk-accordion> -->
+
+        <cdk-accordion>
+            <cdk-accordion-item #accordionItem="cdkAccordionItem" *ngFor="let item of items">
+                <button class="w-full text-center py-1" type="button" (click)="accordionItem.toggle()">{{ item.label}}
+                    <fa-icon [icon]="accordionItem.expanded ? faAngleUp: faAngleDown"></fa-icon>
+                </button>
+                <div [style.display]="accordionItem.expanded ? '':'none'">
+                    <ul>
+                        <li *ngFor="let subItem of item.items">
+                            {{subItem.label}}
+                        </li>
+                    </ul>
+                </div>
+            </cdk-accordion-item>
+        </cdk-accordion>
+    </div>
+<div class="w-full flex justify-end my-5">
+    <a type="button" (click)="openDialog(lista)"
+        class="flex justify-center items-center cursor-pointer font-medium w-1/6 mr-20 px-2 h-9 rounded-xl border-solid border-2 drop-shadow-xl border-black text-sm bg-white hover:bg-success-500 hover:border-primary-500 hover:text-white"
+        [type]="typeBtn"><fa-icon [icon]="faHandHoldingDollar" class="mr-2"></fa-icon> Crear Presupuesto
+    </a>
+</div>
+
+</div>
